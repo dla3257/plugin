@@ -1,0 +1,67 @@
+.skip-navigation-link {position: absolute;left: -99999%;text-decoration: none;}
+.skip-navigation-link:focus {display: block;left: 0;top: 0;z-index: 999999;  width: 100%;height: 30px;  line-height: 30px;background: #000;color: #fff;text-align: center;font-weight: bold;}
+*{margin:0; padding:0; list-style:none; border:0;text-decoration:none; font-family:"NEXONLv1Gothic",Dotum,"돋움";  letter-spacing:-0.05em;}
+u{text-decoration:underline;}
+table{border-collapse:collapse; border-spacing:0;}
+a{text-decoration: none; transition:color 0.3s ease; -moz-transition:color 0.3s ease; -o-transition:color 0.3s ease; -webkit-transition:color 0.3s ease;}
+input[type=password]{font-family:"Dotum","돋움",sans-serif;}
+*{letter-spacing:-0.05em}
+
+#wrap{width:100%; height:100%; float:left; position:relative; min-height:1080px;}
+.yut_wrap{width:1200px; height:1200px; margin:0 auto; border:2px solid #6f5fe3; border-radius: 5px; position:relative;}
+.yut_point{position:absolute; width:150px; height:150px; margin:25px; border-radius: 50%; background-color:aqua}
+.point_move{position:absolute; width:144px; height:150px; margin:25px 28px 25px 28px; border-radius: 50%; background-color:#2849b5; left:1000px; top:1000px; background:url('http://s.nx.com/s2/game/Kart/v2/event/2019/0131_yutgame/img_chr_flag2.png') no-repeat 0 0; background-position:-576px -450px;}
+
+.point0{left:1000px; top:1000px;}
+.point1{left:1000px; top:800px;}
+.point2{left:1000px; top:600px;}
+.point3{left:1000px; top:400px;}
+.point4{left:1000px; top:200px;}
+.point5{left:1000px; top:0px;}
+/*대각선 시작*/
+.point5_1{left:820px; top:180px;}
+.point5_2{left:670px; top:330px;}
+.point5_3{left:520px; top:480px;}
+.point5_4{left:370px; top:630px;}
+.point5_5{left:220px; top:780px;}
+.point5_6{left:0px; top:1000px;}
+
+.point6{left:800px; top:0px;}
+.point7{left:600px; top:0px;}
+.point8{left:400px; top:0px;}
+.point9{left:200px; top:0px;}
+.point10{left:0px; top:0px;}
+/*대각선 시작*/
+.point10_1{left:220px; top:180px;}
+.point10_2{left:370px; top:330px;}
+.point10_3{left:520px; top:480px;}
+.point10_4{left:670px; top:630px;}
+.point10_5{left:820px; top:780px;}
+.point10_6{left:1000px; top:1000px;}
+
+
+
+.point11{left:0px; top:200px;}
+.point12{left:0px; top:400px;}
+.point13{left:0px; top:600px;}
+.point14{left:0px; top:800px;}
+.point15{left:0px; top:1000px;}
+.point16{left:200px; top:1000px;}
+.point17{left:400px; top:1000px;}
+.point18{left:600px; top:1000px;}
+.point19{left:800px; top:1000px;}
+.point20{left:1000px; top:1000px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

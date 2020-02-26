@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" ></script>
+  <title>Slider_plugin</title>
+  <style type="text/css">
+  li{list-style:none;}
+  .nx_move_wrap{width:100%; position:relative; height:100%; overflow:hidden;}
+  .nx_move_wrap ul{width:100%; float:left;}
+  .nx_move_wrap ul li{width:100%; position:absolute; left:0; top:0; height:100%;}
+  .nx_move_wrap ul li > div{position:absolute; left:0; top:0; height:50%; width:100%; overflow:hidden;}
+  .nx_move_wrap ul li > div.first{top:0;}
+  .nx_move_wrap ul li > div.first img{position:absolute; left:0; top:0;}
+  .nx_move_wrap ul li > div.last{top:50%;}
+  .nx_move_wrap ul li > div.last img{position:absolute; left:0; bottom:0;}
+  .nx_move_wrap ul li > div span{position:relative; float:left; width:100%; height:100%;}
+  </style>
+  <script type="text/javascript">
+  var slide_flag = false;
+  var n_idx = 0;
+  function Nx_slide_rapid(wapper){
+	var $wrap = $("."+wapper);
+	var img_len = $wrap.find("ul li").length;
+	$wrap.find("ul").wrap("<div class='nx_move_wrap'>") //자동 커스텀
+	$wrap.find("ul li").eq(0).siblings().animate({"opacity":"0"},0); //초기 링크 안겹치게 작업
+	$wrap.find("ul li").eq(n_idx).css("z-index","10");
+
+	/*이미지 wraper 감싸기 작업*/
+	for(var li_index = 0; li_index < img_len; li_index++){
+		var li_point = $wrap.find("ul li").eq(li_index);
+		var li_html = li_point.html();
+		li_point.html("");
+		var ins_tag = "<div class='first'><span>"+ li_html +"</span></div>";
+		var ins_tag2 = "<div class='last'><span>"+ li_html +"</span></div>";
+		li_point.append(ins_tag);
+		li_point.append(ins_tag2);
+	}
+  }
+  function nx_prev_banner(){
+	  if(slide_flag == false){
+		  slide_flag = true;
+		  var img_len = $(".nx_move_wrap ul li").length;
+		  if(n_idx < 0){
+			n_idx = img_len - 1;
+		  }else{
+			n_idx = n_idx - 1;
+		  }
+		  if(n_idx == img_len-1){
+			$(".nx_move_wrap ul li").eq(n_idx).css("z-index","10");
+			$(".nx_move_wrap ul li").eq(n_idx).siblings().css("z-index","9");
+			$(".nx_move_wrap ul li").eq(n_idx).animate({"opacity":"1"},500,function(){
+				slide_flag = false;
+			});;
+			$(".nx_move_wrap ul li").eq(n_idx).siblings().animate({"opacity":"0"},500);
+			$(".nx_move_wrap ul li").eq(0).find("div.first").animate({"left":"-100%"},500);
+			$(".nx_move_wrap ul li").eq(0).find("div.last").animate({"left":"100%"},500);
+			$(".nx_move_wrap ul li").eq(0).siblings().find("div.first").animate({"left":"0"},500);
+			$(".nx_move_wrap ul li").eq(0).siblings().find("div.last").animate({"left":"0"},500);
+		  }else{
+			$(".nx_move_wrap ul li").eq(n_idx).css("z-index","10");
+			$(".nx_move_wrap ul li").eq(n_idx).siblings().css("z-index","9");
+			$(".nx_move_wrap ul li").eq(n_idx).animate({"opacity":"1"},500,function(){
+				slide_flag = false;
+			});;
+			$(".nx_move_wrap ul li").eq(n_idx).siblings().animate({"opacity":"0"},500);
+			$(".nx_move_wrap ul li").eq(n_idx+1).find("div.first").animate({"left":"-100%"},500);
+			$(".nx_move_wrap ul li").eq(n_idx+1).find("div.last").animate({"left":"100%"},500);
+			$(".nx_move_wrap ul li").eq(n_idx+1).siblings().find("div.first").animate({"left":"0"},0);
+			$(".nx_move_wrap ul li").eq(n_idx+1).siblings().find("div.last").animate({"left":"0"},0);
+		  }
+	  }
+  }
+  
+  function nx_next_banner(){
+	  if(slide_flag == false){
+		  slide_flag = true;
+		  var img_len = $(".nx_move_wrap ul li").length;
+		  n_idx = n_idx + 1;
+		  if(n_idx == img_len){
+			n_idx = 0;
+		  }
+		  $(".nx_move_wrap ul li").eq(n_idx).css("z-index","10");
+		  $(".nx_move_wrap ul li").eq(n_idx).siblings().css("z-index","9");
+		  $(".nx_move_wrap ul li").eq(n_idx).animate({"opacity":"1"},500);
+		  $(".nx_move_wrap ul li").eq(n_idx).siblings().animate({"opacity":"0"},500);
+		  $(".nx_move_wrap ul li").eq(n_idx-1).find("div.first").animate({"left":"-100%"},500);
+		  $(".nx_move_wrap ul li").eq(n_idx-1).find("div.last").animate({"left":"100%"},500,function(){
+			 slide_flag = false; 
+		  });;
+		  $(".nx_move_wrap ul li").eq(n_idx-1).siblings().find("div.first").animate({"left":"0"},0);
+		  $(".nx_move_wrap ul li").eq(n_idx-1).siblings().find("div.last").animate({"left":"0"},0);
+	  }
+  }
+  $(function(){
+	  Nx_slide_rapid("slider");
+  });
+  </script>
+ </head>
+ <body>
+  <div class="slider" style="width:565px; height:290px;">
+	<ul>
+		<li><a href="#a1"><img src="http://workshop.rs/projects/coin-slider/games/god_of_war_3.jpg" alt="" /></a></li>
+		<li><a href="#a2"><img src="http://workshop.rs/projects/coin-slider/games/brink.jpg" alt="" /></a></li>
+		<li><a href="#a3"><img src="http://workshop.rs/projects/coin-slider/games/star_wars_the_old_republic.jpg" alt="" /></a></li>
+		<li><a href="#a4"><img src="http://workshop.rs/projects/coin-slider/games/spiderman_shattered_dimensions.jpg" alt="" /></a></li>
+		<li><a href="#a5"><img src="http://workshop.rs/projects/coin-slider/games/borderlands.jpg" alt="" /></a></li>
+	</ul>
+  </div>
+
+
+
+  <a href="#a" onclick="nx_prev_banner();">이전</a>
+  <a href="#a" onclick="nx_next_banner();">다음</a>
+ </body>
+</html>
